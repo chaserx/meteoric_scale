@@ -1,0 +1,33 @@
+<head>
+  <title>meteoric_scale</title>
+</head>
+
+<body>
+  {{> hello}}
+  {{> new_measurement}}
+  {{> measurements_list}}
+</body>
+
+<template name="hello">
+  <h1>Hello World!</h1>
+  {{greeting}}
+  <input type="button" value="Click" />
+</template>
+
+<template name="new_measurement">
+  <form class="form">
+    <div class="control-group">
+      <label class="control-label">Measurement</label>
+      <div class="controls">
+        <input type="text" class="weight" placeholder="206" />
+      </div>
+    </div>
+  </form>
+  <a href="#" class="btn btn-primary save">Save</a>
+</template>
+
+<template name="measurements_list">
+  {{#each measurements}}
+    <p>{{weight}}</p>
+  {{/each}}
+</template>
