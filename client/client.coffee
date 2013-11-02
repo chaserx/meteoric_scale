@@ -10,13 +10,13 @@ Template.hello.helpers
     skinny_terms = ['slim', 'tiny', 'thin', 'bones', 'Skeletor', 'twiggy']
     # from: http://coffeescriptcookbook.com/chapters/arrays/shuffling-array-elements
     shuffle = (skinny_terms) ->
-    i = skinny_terms.length
-    while --i > 0
-      # ~~ is a common optimization for Math.floor
-      j = ~~(Math.random() * (i + 1))
-      t = skinny_terms[j]
-      skinny_terms[j] = skinny_terms[i]
-      skinny_terms[i] = t
+      i = skinny_terms.length
+      while --i > 0
+        # ~~ is a common optimization for Math.floor
+        j = ~~(Math.random() * (i + 1))
+        t = skinny_terms[j]
+        skinny_terms[j] = skinny_terms[i]
+        skinny_terms[i] = t
     skinny_terms[0]
 
 Template.measurements_list.helpers
