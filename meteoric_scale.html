@@ -49,15 +49,7 @@
           {{> new_measurement}}
         </div>
         <div class="col-md-8">
-          <div class="panel panel-info">
-            <div class="panel-heading">
-              <h3 class="panel-title">Graph</h3>
-            </div>
-            <div class="panel-body">
-              <div id="my_weight_chart"></div>
-              the fancy graph goes here
-            </div>
-          </div>
+          {{> graph}}
         </div>
       </div>
 
@@ -95,5 +87,17 @@
         </tr>
       {{/each}}
     </table>
+  </div>
+</template>
+
+<template name="graph">
+  <div class="panel panel-info">
+    <div class="panel-heading">
+      <h3 class="panel-title">Graph</h3>
+    </div>
+    <div class="panel-body">
+      <div id="my_weight_chart"></div>
+      the fancy graph goes here
+    </div>
   </div>
 </template>

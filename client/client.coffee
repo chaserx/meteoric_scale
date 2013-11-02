@@ -31,6 +31,7 @@ Template.measurements_list.events
   "click .btn.remove_measurement": (event) ->
     measurement = @
     $(event.target).closest('tr').find('td').fadeOut 1000, ->
+      # NOTE(chase): not sure why I had to use ._id instead of .id, but works.
       Measurements.remove measurement._id
 
 Template.new_measurement.events
