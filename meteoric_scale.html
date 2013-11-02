@@ -1,33 +1,99 @@
 <head>
-  <title>meteoric_scale</title>
+  <title>Meteoric Scale</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="a simple weight tracking app">
+  <meta name="author" content="">
 </head>
 
 <body>
-  {{> hello}}
-  {{> new_measurement}}
-  {{> measurements_list}}
+  <!-- Fixed navbar -->
+  <div class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">Metoric Scale</a>
+      </div>
+      <div class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="#">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><a href="#">Action</a></li>
+              <li><a href="#">Another action</a></li>
+              <li><a href="#">Something else here</a></li>
+              <li class="divider"></li>
+              <li class="dropdown-header">Nav header</li>
+              <li><a href="#">Separated link</a></li>
+              <li><a href="#">One more separated link</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div><!--/.nav-collapse -->
+    </div>
+  </div>
+  <!-- Begin page content -->
+    <div class="container">
+      <div class="page-header">
+        {{> hello}}
+      </div>
+
+      <div class="row">
+        <div class="col-md-4">
+          {{> new_measurement}}
+        </div>
+        <div class="col-md-8">
+          <div class="panel panel-info">
+            <div class="panel-heading">
+              <h3 class="panel-title">Graph</h3>
+            </div>
+            <div class="panel-body">
+              <div id="my_weight_chart"></div>
+              the fancy graph goes here
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          {{> measurements_list}}
+        </div>
+      </div>
+    </div>
 </body>
 
 <template name="hello">
-  <h1>Hello World!</h1>
-  {{greeting}}
-  <input type="button" value="Click" />
+  <h1>Weigh in, {{skinny_term}}.</h1>
 </template>
 
 <template name="new_measurement">
-  <form class="form">
-    <div class="control-group">
-      <label class="control-label">Measurement</label>
-      <div class="controls">
-        <input type="text" class="weight" placeholder="206" />
-      </div>
+  <form role="form" class="form-inline">
+    <div class="form-group">
+      <input type="text" class="weight form-control" placeholder="206" />
     </div>
+    <button class="btn btn-default save">Save</button>
+    <span class="help-block">Please enter weight in pounds (lbs).</span>
   </form>
-  <a href="#" class="btn btn-primary save">Save</a>
 </template>
 
 <template name="measurements_list">
-  {{#each measurements}}
-    <p>{{weight}}</p>
-  {{/each}}
+  <br>
+  <div>
+    <table class="table table-bordered">
+      {{#each measurements}}
+        <tr>
+          <td>{{weight}} lbs</td>
+          <td>{{pretty_date_format}}</td>
+          <td><button class="btn btn-danger remove_measurement">Delete</button></td>
+        </tr>
+      {{/each}}
+    </table>
+  </div>
 </template>

@@ -8,3 +8,5 @@ autopublish
 insecure
 preserve-inputs
 coffeescript
+bootstrap-3
+moment

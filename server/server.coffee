@@ -8,6 +8,8 @@ Meteor.publish "measurements", ->
 Measurements.allow
   insert: (doc) ->
     true
+  remove: (doc) ->
+    true
 
 Meteor.startup = ->
   # code to run on server startup
