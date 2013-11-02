@@ -8,10 +8,12 @@ Meteor.autosubscribe ->
 Template.hello.helpers
   skinny_term: ->
     skinny_terms = ['slim', 'tiny', 'thin', 'bones', 'Skeletor', 'twiggy']
+    # from: http://coffeescriptcookbook.com/chapters/arrays/shuffling-array-elements
     shuffle = (skinny_terms) ->
     i = skinny_terms.length
     while --i > 0
-      j = ~~(Math.random() * (i + 1)) # ~~ is a common optimization for Math.floor
+      # ~~ is a common optimization for Math.floor
+      j = ~~(Math.random() * (i + 1))
       t = skinny_terms[j]
       skinny_terms[j] = skinny_terms[i]
       skinny_terms[i] = t
@@ -21,13 +23,15 @@ Template.measurements_list.helpers
   measurements: ->
     Measurements.find {}, {sort: {created_at: -1}}
 
-  "click .btn.remove_measurement": (event) ->
-    measurement = @
-    Measurements.remove measurement.id
-
   pretty_date_format: ->
     measurement = @
     moment(measurement.created_at).format('MMMM Do YYYY, h:mm:ss a')
+
+Template.measurements_list.events
+  "click .btn.remove_measurement": (event) ->
+    measurement = @
+    $(event.target).closest('tr').find('td').fadeOut 1000, ->
+      Measurements.remove measurement._id
 
 Template.new_measurement.events
   "click .btn.save": (event) ->
