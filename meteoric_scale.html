@@ -89,12 +89,12 @@
       <h3 class="panel-title"><i class="fa fa-table"></i> Measurements</h3>
     </div>
     <div class="panel-body">
-      <table class="table table-bordered">
+      <table class="table table-hover">
         {{#each measurements}}
           <tr>
             <td>{{weight}} lbs</td>
             <td>{{pretty_date_format}}</td>
-            <td><button class="btn btn-danger remove_measurement">Delete</button></td>
+            <td><button class="btn btn-danger btn-xs remove_measurement">Delete</button></td>
           </tr>
         {{/each}}
       </table>
