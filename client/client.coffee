@@ -8,30 +8,7 @@ Meteor.autosubscribe ->
 Template.hello.helpers
   skinny_term: ->
     skinny_terms = ['slim', 'tiny', 'thin', 'bones', 'Skeletor', 'twiggy']
-    # from: http://coffeescriptcookbook.com/chapters/arrays/shuffling-array-elements
-    shuffle = (skinny_terms) ->
-      i = skinny_terms.length
-      while --i > 0
-        # ~~ is a common optimization for Math.floor
-        j = ~~(Math.random() * (i + 1))
-        t = skinny_terms[j]
-        skinny_terms[j] = skinny_terms[i]
-        skinny_terms[i] = t
-    skinny_terms[0]
-
-  $ ->
-    $(".container").on 'click', ".show-form", ->
-      $(".start-hidden").toggle()
-
-    $(".container").on 'click', ".hide-form", ->
-      $(".start-hidden").toggle()
-
-    toggleChevron = (e) ->
-      $(e.target).prev(".panel-heading").find("span.indicator").toggleClass "glyphicon-chevron-down glyphicon-chevron-up"
-
-    $("#accordion").on 'hidden.bs.collapse', toggleChevron
-
-    $("#accordion").on 'shown.bs.collapse', toggleChevron
+    skinny_terms[Math.floor(Math.random()*skinny_terms.length)]
 
 Template.measurements_list.helpers
   measurements: ->
@@ -51,8 +28,23 @@ Template.measurements_list.events
 Template.new_measurement.events
   "click .btn.save": (event) ->
     data =
+      userId: Meteor.userId()
       weight: $('.weight').val()
       created_at: Date.now()
     Measurements.insert data
     $(".start-hidden").toggle()
+
+$ ->
+  $(".container").on 'click', ".show-form", ->
+    $(".start-hidden").toggle()
+
+  $(".container").on 'click', ".hide-form", ->
+    $(".start-hidden").toggle()
+
+  toggleChevron = (e) ->
+    $(e.target).prev(".panel-heading").find("span.indicator").toggleClass "glyphicon-chevron-down glyphicon-chevron-up"
+
+  $("#accordion").on 'hidden.bs.collapse', toggleChevron
+
+  $("#accordion").on 'shown.bs.collapse', toggleChevron
 
