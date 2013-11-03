@@ -44,26 +44,28 @@
       <div class="page-header">
         {{> hello}}
       </div>
-
-      <div class="row">
+      <div class="row start-hidden">
         <div class="col-md-4">
           {{> new_measurement}}
         </div>
-        <div class="col-md-8">
-          {{> graph}}
-        </div>
       </div>
-
       <div class="row">
         <div class="col-md-12">
-          {{> measurements_list}}
+          <div class="panel-group" id="accordion">
+            {{> graph}}
+            {{> measurements_list}}
+          </div>
         </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">&nbsp;</div>
       </div>
     </div>
 </body>
 
 <template name="hello">
   <h1>Weigh in, {{skinny_term}}.</h1>
+  <button class="btn btn-default btn-sm show-form"><i class="fa fa-plus"></i> Add measurement</button>
 </template>
 
 <template name="new_measurement">
@@ -76,7 +78,8 @@
         <div class="form-group">
           <input type="text" class="weight form-control" placeholder="206" />
         </div>
-        <button class="btn btn-default save">Save</button>
+        <button class="btn btn-info save">Save</button>
+        <button class="btn btn-warning hide-form">Cancel</button>
         <span class="help-block">Please enter weight in pounds (lbs).</span>
       </form>
     </div>
@@ -86,22 +89,24 @@
 <template name="measurements_list">
   <div class="panel panel-info">
     <div class="panel-heading">
-      <h3 class="panel-title"><i class="fa fa-table"></i> Measurements</h3>
+      <h3 class="panel-title"><i class="fa fa-table"></i> <a data-toggle="collapse" data-target="#collapseTwo" href="#collapseTwo">Measurements</a> <span class="indicator pull-right glyphicon glyphicon-chevron-down"></span></h3>
     </div>
-    <div class="panel-body">
-      <table class="table table-hover">
-        {{#each measurements}}
-          <tr>
-            <td>{{weight}} lbs</td>
-            <td>{{pretty_date_format}}</td>
-            <td>
-              <button class="btn btn-danger btn-xs remove_measurement">
-                &times;
-              </button>
-            </td>
-          </tr>
-        {{/each}}
-      </table>
+    <div id="collapseTwo" class="panel-collapse collapse in">
+      <div class="panel-body list">
+        <table class="table table-hover">
+          {{#each measurements}}
+            <tr>
+              <td>{{weight}} lbs</td>
+              <td>{{pretty_date_format}}</td>
+              <td>
+                <button class="btn btn-danger btn-xs remove_measurement">
+                  &times;
+                </button>
+              </td>
+            </tr>
+          {{/each}}
+        </table>
+      </div>
     </div>
   </div>
 </template>
@@ -109,11 +114,13 @@
 <template name="graph">
   <div class="panel panel-info">
     <div class="panel-heading">
-      <h3 class="panel-title"><i class="fa fa-bar-chart-o"></i> Graph</h3>
+      <h3 class="panel-title"><i class="fa fa-bar-chart-o"></i> <a data-toggle="collapse" data-target="#collapseOne" href="#collapseOne">Graph</a> <span class="indicator pull-right glyphicon glyphicon-chevron-down"></span></h3>
     </div>
-    <div class="panel-body">
-      <div id="my_weight_chart"></div>
-      <div>the fancy graph goes here</div>
+    <div id="collapseOne" class="panel-collapse collapse in">
+      <div class="panel-body chart">
+        <div id="my_weight_chart"></div>
+        <div>one day, the fancy graph goes here</div>
+      </div>
     </div>
   </div>
 </template>

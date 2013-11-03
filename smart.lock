@@ -2,27 +2,16 @@
   "meteor": {},
   "dependencies": {
     "basePackages": {
-      "coffee-alerts": {},
       "router": {},
-      "iron-router": {},
       "bootstrap-3": {},
-      "moment": {}
+      "moment": {},
+      "d3graph": {}
     },
     "packages": {
-      "coffee-alerts": {
-        "git": "https://github.com/pfafman/meteor-coffee-alerts.git",
-        "tag": "v0.1.0",
-        "commit": "6194f15087e2751465bd5fb3141159126eae29af"
-      },
       "router": {
         "git": "https://github.com/tmeasday/meteor-router.git",
         "tag": "v0.5.4.1",
         "commit": "d00e380dda2184b70e909fc4a0fb5358d602c586"
-      },
-      "iron-router": {
-        "git": "https://github.com/EventedMind/iron-router.git",
-        "tag": "v0.6.1",
-        "commit": "4e1ee0581d68bff422a915dacb0bd30eae10fe08"
       },
       "bootstrap-3": {
         "git": "https://github.com/mangasocial/meteor-bootstrap-3.git",
@@ -33,6 +22,11 @@
         "git": "https://github.com/acreeger/meteor-moment.git",
         "tag": "v2.2.1",
         "commit": "9ee12e714afe56b189f53076447b7b54f3012065"
+      },
+      "d3graph": {
+        "git": "https://github.com/Futurescaper/meteor-d3graph.git",
+        "tag": "v0.1.89",
+        "commit": "8df889cc1fe366ff796998b24df14cc539eb123e"
       },
       "page-js-ie-support": {
         "git": "https://github.com/tmeasday/meteor-page-js-ie-support.git",

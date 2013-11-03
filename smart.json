@@ -1,9 +1,8 @@
 {
   "packages": {
-    "coffee-alerts": {},
     "router": {},
-    "iron-router": {},
     "bootstrap-3": {},
-    "moment": {}
+    "moment": {},
+    "d3graph": {}
   }
 }
